@@ -86,15 +86,14 @@ export default function Navbar() {
               {mainLinks.map((link) => {
                 const active = isActive(link.href);
                 return (
-                  <Link
+                  <span
                     key={link.label}
-                    href={link.href}
-                    className={`nav-link transition-colors ${
-                      active ? "is-active text-white" : "hover:text-white"
-                    }`}
+                    aria-disabled="true"
+                    aria-current={active ? "page" : undefined}
+                    className={active ? "nav-link is-active text-white" : ""}
                   >
                     {link.label}
-                  </Link>
+                  </span>
                 );
               })}
               <div className="relative group cursor-pointer">
@@ -112,17 +111,15 @@ export default function Navbar() {
                   {pageLinks.map((link) => {
                     const active = isActive(link.href);
                     return (
-                      <Link
+                      <span
                         key={link.label}
-                        href={link.href}
-                        className={`block px-4 py-2 rounded-lg transition-colors ${
-                          active
-                            ? "bg-white/5 text-white"
-                            : "hover:bg-white/5 hover:text-white"
+                        aria-disabled="true"
+                        className={`block px-4 py-2 rounded-lg ${
+                          active ? "bg-white/5 text-white" : ""
                         }`}
                       >
                         {link.label}
-                      </Link>
+                      </span>
                     );
                   })}
                 </div>
@@ -131,7 +128,7 @@ export default function Navbar() {
 
             {/* CTA Button */}
             <div className="hidden lg:block shrink-0">
-              <Button href="/contact" variant="primary" size="md" radius="pill">
+              <Button variant="primary" size="md" radius="pill" className="pointer-events-none cursor-default">
                 Contact Us
               </Button>
             </div>
@@ -184,17 +181,17 @@ export default function Navbar() {
             {mainLinks.map((link) => {
               const active = isActive(link.href);
               return (
-                <Link
+                <span
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`flex items-center justify-between py-3 text-lg font-medium border-b border-white/5 transition-colors ${
-                    active ? "text-white" : "text-white/70 hover:text-white"
+                  aria-disabled="true"
+                  aria-current={active ? "page" : undefined}
+                  className={`flex items-center justify-between py-3 text-lg font-medium border-b border-white/5 ${
+                    active ? "text-white" : "text-white/70"
                   }`}
                 >
                   <span>{link.label}</span>
                   {active && <span className="w-2 h-2 rounded-full bg-white" />}
-                </Link>
+                </span>
               );
             })}
 
@@ -204,17 +201,16 @@ export default function Navbar() {
                 {pageLinks.map((link) => {
                   const active = isActive(link.href);
                   return (
-                    <Link
+                    <span
                       key={link.label}
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`flex items-center justify-between py-2.5 text-sm border-b border-white/5 transition-colors ${
-                        active ? "text-white" : "text-gray-300 hover:text-white"
+                      aria-disabled="true"
+                      className={`flex items-center justify-between py-2.5 text-sm border-b border-white/5 ${
+                        active ? "text-white" : "text-gray-300"
                       }`}
                     >
                       <span>{link.label}</span>
                       {active && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
-                    </Link>
+                    </span>
                   );
                 })}
               </div>
@@ -224,13 +220,13 @@ export default function Navbar() {
 
         {/* Drawer Footer */}
         <div className="px-6 py-5 border-t border-white/10 shrink-0">
-          <Button href="/contact" variant="primary" size="md" radius="pill" fullWidth>
+          <Button variant="primary" size="md" radius="pill" fullWidth className="pointer-events-none cursor-default">
             Contact Us
           </Button>
           <div className="flex items-center justify-center gap-4 mt-4 text-gray-400 text-sm">
-            <Link href="/privacy" className="hover:text-brand-primary transition-colors">Privacy</Link>
+            <span>Privacy</span>
             <span className="w-1 h-1 bg-gray-500 rounded-full" />
-            <Link href="/terms" className="hover:text-brand-primary transition-colors">Terms</Link>
+            <span>Terms</span>
           </div>
         </div>
       </aside>

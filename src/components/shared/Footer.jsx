@@ -1,23 +1,8 @@
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { services } from "@/data/services";
-import { projects } from "@/data/projects";
 
-const mainLinks = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Blogs", href: "/blogs" },
-];
+const mainLinks = ["Home", "About Us", "Services", "Projects", "Blogs"];
 
-const utilityLinks = [
-  { label: "404", href: "/404" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Contact", href: "/contact" },
-  { label: "Projects Details", href: `/projects/${projects[0].slug}` },
-  { label: "Service Details", href: `/services/${services[0].slug}` },
-];
+const utilityLinks = ["404", "Pricing", "Contact", "Projects Details", "Service Details"];
 
 export default function Footer() {
   const [showTop, setShowTop] = useState(false);
@@ -112,11 +97,9 @@ export default function Footer() {
               </button>
               <h4 className="mb-6 hidden text-lg font-semibold lg:block">Main Pages</h4>
               <ul className={`${mainOpen ? "mt-4 flex" : "hidden"} flex-col items-center gap-3 text-gray-400 lg:mt-0 lg:flex lg:items-start`}>
-                {mainLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="transition-colors hover:text-brand-primary">
-                      {link.label}
-                    </Link>
+                {mainLinks.map((label) => (
+                  <li key={label}>
+                    <span aria-disabled="true">{label}</span>
                   </li>
                 ))}
               </ul>
@@ -142,11 +125,9 @@ export default function Footer() {
               </button>
               <h4 className="mb-6 hidden text-lg font-semibold lg:block">Utility Pages</h4>
               <ul className={`${utilityOpen ? "mt-4 flex" : "hidden"} flex-col items-center gap-3 text-gray-400 lg:mt-0 lg:flex lg:items-start`}>
-                {utilityLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="transition-colors hover:text-brand-primary">
-                      {link.label}
-                    </Link>
+                {utilityLinks.map((label) => (
+                  <li key={label}>
+                    <span aria-disabled="true">{label}</span>
                   </li>
                 ))}
               </ul>
@@ -222,8 +203,8 @@ export default function Footer() {
             </a>
           </p>
           <div className="flex gap-6 mt-2 md:mt-0">
-            <Link href="/privacy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-gray-300 transition-colors">Terms & Conditions</Link>
+            <span>Privacy Policy</span>
+            <span>Terms & Conditions</span>
           </div>
         </div>
       </div>
