@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f2f5f1;
+  color: #0f1714;
+  overflow-x: hidden;
+}
+
+/* Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-glass {
+  background: rgba(15, 23, 20, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Hide scrollbar for horizontal sections */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sticky Cards Section */
+.sticky-card-wrapper {
+  position: relative;
+  padding-bottom: 10vh;
+}
+.sticky-card {
+  position: sticky;
+  top: 15vh;
+  margin-bottom: 2rem;
+  transform-origin: top center;
+}
+
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Slick Carousel overrides */
+.slick-track {
+  display: flex !important;
+}
+.slick-slide {
+  height: auto !important;
+  display: flex !important;
+}
+.slick-slide > div {
+  height: 100%;
+  width: 100%;
+  min-width: 0;
+}
+.slick-list {
+  overflow: visible !important;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
